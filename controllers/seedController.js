@@ -25,19 +25,19 @@
         var answer = {
             oValue: masterList[i][1], 
             isCorrect: true};
-        var optionsList = [];
-        optionsList.push(answer);
+        var options = [];
+        options.push(answer);
         var moreOptions = masterList[i][2].split(',');
         
         for(var j=0; j<moreOptions.length; j++){
-            optionsList.push({
+            options.push({
                 oValue: moreOptions[j],
                 isCorrect:false
             })
         }
         var saveQuestion = {
             question,
-            optionsList
+            options
         }
         createAndSaveController(saveQuestion , function(err, res){
             if(err){

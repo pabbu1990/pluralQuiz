@@ -7,7 +7,15 @@ var express = require('express'),
     
     app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server has started");
-    })
+    });
+    
+    app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", '*');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS, HEAD');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json,Authorization');
+    next();
+});
 
     var option = 
     {
