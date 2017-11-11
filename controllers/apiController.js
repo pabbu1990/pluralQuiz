@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     Questions = require('../models/question'),
     bodyParser = require('body-parser'),
+    JSONStream = require('JSONStream'),
     createAndSaveController = require('./createAndSaveController');
     
     
@@ -14,15 +15,10 @@ var mongoose = require('mongoose'),
         
     });
     
+    
     app.get('/questions', function(req, res){
-        var optionsRet;
-        Questions.find({}, function(err, body){
-            if(err) {
-                console.log('Error occured'+err);
-                throw err;}
-             res.send(JSON.stringify(body));  
-        })
-        
+         Questions.find().stream()
+         .pipe(JSONStream.stringify()).pipe(res);
     });
     
     app.post('/new', function(req, res){
