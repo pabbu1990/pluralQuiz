@@ -1,8 +1,7 @@
 var mongoose = require('mongoose'),
     Questions = require('../models/question'),
     bodyParser = require('body-parser'),
-    JSONStream = require('JSONStream'),
-    createAndSaveController = require('./createAndSaveController');
+    JSONStream = require('JSONStream');
     
     
     module.exports = function(app){
