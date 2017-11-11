@@ -19,6 +19,7 @@ var mongoose = require('mongoose'),
     app.get('/questions', function(req, res){
          Questions.find().stream()
          .pipe(JSONStream.stringify()).pipe(res);
+         
     });
     
     app.post('/new', function(req, res){
