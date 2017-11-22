@@ -64,4 +64,20 @@ var mongoose = require('mongoose'),
          });
         
     });
+    
+    app.delete("/delete/:id", function(req, res){
+        console.log("Is this working?"+JSON.stringify(req.params.id));
+         Questions.findByIdAndRemove(req.params.id, function(err, body){
+            if(err)
+            {
+                console.log(err);
+                
+            }
+            else
+            {
+            res.send('deleted');;
+            }
+         });
+        
+    });
 }
